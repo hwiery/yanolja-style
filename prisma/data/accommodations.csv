@@ -1,0 +1,11 @@
+name,location,description,price,image_url
+Hotel Seoul,Seoul,고급 도심 호텔 50000원 부터,50000,public/images/Hotel%20Seoul.png
+Pension Sun,Paju,자연 속 펜션 체험,100000,public/images/Pension%20Sun.png
+Resort Beach,Busan,해변 리조트 숙박,120000,public/images/Resort%20Beach.png
+Villa Hills,Jeju,힐링 풀빌라,150000,public/images/Villa%20Hills.png
+Motel Night,Seoul,편안한 모텔,30000,public/images/Motel%20Night.png
+Glamping Star,Gapyeong,별빛 글램핑 휴식,80000,public/images/Glamping%20Star.png
+Premium Stay,Incheon,프리미엄 객실,200000,public/images/Premium%20Stay.png
+Urban Inn,Daegu,도시형 인천 호텔,40000,public/images/Urban%20Inn.png
+Lakeview Lodge,Chungju,호수 전망 로지,90000,public/images/Lakeview%20Lodge.png
+Mountain Cabin,Pyeongchang,산속 캐빈 체험,110000,public/images/Mountain%20Cabin.png 
