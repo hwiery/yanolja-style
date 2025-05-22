@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Accommodation {
+  id          String   @id @default(uuid())
+  name        String
+  location    String
+  description String
+  price       Int
+  imageUrl    String   @map("image_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  stock       Int      @default(0)
+
+  // 추가 관계 필드: 카테고리, 에어니티, 리뷰
+  categories  Category[]
+  amenities   Amenity[]
+  reviews     Review[]
+}
+
+// 카테고리 모델: 다양한 숙소 분류
+model Category {
+  id             String           @id @default(uuid())
+  name           String           @unique
+  accommodations Accommodation[]  
+}
+
+// 편의시설 모델: 숙소가 제공하는 편의시설
+model Amenity {
+  id             String           @id @default(uuid())
+  name           String           @unique
+  accommodations Accommodation[]
+}
+
+// 리뷰 모델: 사용자 리뷰 정보
+model Review {
+  id             String           @id @default(uuid())
+  rating         Int
+  comment        String?
+  userName       String
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  accommodation  Accommodation    @relation(fields: [accommodationId], references: [id])
+  accommodationId String
+}
