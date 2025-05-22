@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>야놀자 스타일 서비스 구조도</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: 'Pretendard', 'Noto Sans KR', sans-serif; background: #f9fafb; margin: 0; padding: 2rem; }
+    h1 { color: #2563eb; }
+    .mermaid { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px #0001; }
+  </style>
+</head>
+<body>
+  <h1>야놀자 스타일 서비스 전체 구조도</h1>
+  <div class="mermaid">
+flowchart TD
+  DB[(데이터베이스)]
+  BE[백엔드(API 서버)]
+  FE[프론트엔드(클라이언트)]
+  BO[백오피스(어드민)]
+
+  DB <--> BE
+  BE <--> FE
+  BE <--> BO
+
+  %% 사용자 플로우
+  U1[고객: 홈 접속] --> FE
+  FE -->|API 호출| BE
+  FE -->|예약 요청| BE
+  FE -->|상품/이미지 렌더링| U1
+
+  %% 어드민 플로우
+  BO -->|상품 관리| BE
+  BO -->|재고/상세 관리| BE
+
+  %% 백엔드 내부
+  BE -->|DB 연결| DB
+  BE -->|상품/이미지/재고| DB
+</div>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</body>
+</html> 
